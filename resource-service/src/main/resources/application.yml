@@ -1,0 +1,28 @@
+server:
+  port: 5050
+
+spring:
+  application:
+    name: resource-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:6060/eureka
+
+zuul:
+  host:
+    connect-timeout-millis: 50000000
+    socket-timeout-millis: 50000000
+  ignored-services: '*'
+  routes:
+    resource-service:
+      path: /resource/**
+      serviceId: resource-service
+      stripPrefix: true
+    eureka-client:
+      path: /eureka/**
+      serviceId: eureka-client
+      stripPrefix: true

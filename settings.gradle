@@ -1,0 +1,5 @@
+rootProject.name = 'SpringBootMicroservices'
+
+include 'eureka-client'
+include 'eureka-discovery-server'
+include 'resource-service'
